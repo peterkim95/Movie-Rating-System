@@ -1,4 +1,4 @@
-Movie-Rating-System
-===================
+EV-Movie-Ratings
+================
 
-The Ultimate Movie Ratings App
+The Ultimate Movie Rating System

@@ -1,0 +1,87 @@
+<html lang="en" ng-app="movieApp">
+    <head>
+        <title>Should You Watch It?</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="odometer-theme-default.css" />
+        <link rel="stylesheet" href="index.css">
+
+    </head>
+    <body>
+        <div id="main-container" ng-controller="SearchController as searchCtrl">
+            <div id="form-container">
+                <form name="searchForm" ng-submit="searchCtrl.search()" novalidate>
+                    <input type="text" name="query" id="query-input" ng-model="searchCtrl.query" placeholder="What's the title of the film?">
+                    <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"/>
+                </form>
+            </div>
+            <div id="result-container"> <!--ng-show="searchCtrl.result"-->
+                <h1 ng-hide="searchCtrl.resultFound">No Result Found. :(</h1>
+                <div ng-show="searchCtrl.resultFound">
+                    
+                    <h1 id="title">{{searchCtrl.title}}</h1>
+                    <h2 id="year">{{searchCtrl.year}}</h2>
+                    
+                    <div id="minor-info-area">
+                        <span ng-show="searchCtrl.title" id="rated" ng-bind-html="searchCtrl.rated"></span>
+                        <span ng-bind-html="searchCtrl.runtime"></span>
+                        <span class="text-uppercase" ng-bind-html="searchCtrl.genre"></span>
+                    </div>
+                    
+                    <p id="plot" class="lead">{{searchCtrl.plot}}</p>
+                    
+                    <div id="poster-area">
+                        <img id="poster" ng-hide="searchCtrl.noPosterFound" ng-src="{{searchCtrl.poster}}" />
+                        <div ng-show="searchCtrl.noPosterFound">No Poster Found. Use your imagination.</div>
+                    </div>
+                    
+                    <div ng-show="searchCtrl.title" id="info-area">
+                        <!--<div>{{searchCtrl.released}}</div> >>> Who really looks at the exact date?--> 
+                        <div id="director" ng-show="searchCtrl.resultFound" ng-bind-html="searchCtrl.director"></div>
+                        <div id="writer" ng-show="searchCtrl.resultFound" ng-bind-html="searchCtrl.writer"></div>
+                        <div id="actors" ng-show="searchCtrl.resultFound" ng-bind-html="searchCtrl.actors"></div>
+                        
+                        <br>  
+                        
+                        <div id="critics-area">
+                            <div id="mc-area">
+                                <img src="mc-icon.png" id="metacritic-icon" ng-show="searchCtrl.metascore" />
+                                <div ng-show="searchCtrl.metascore" id="metascore" ng-bind-html="searchCtrl.metascore"></div>
+                            </div>
+                            
+                            <div id="imdb-area">
+                                <img src="imdb-icon.png" id="imdb-icon" ng-show="searchCtrl.imdbrating" />
+                                <img src="star.png" ng-show="searchCtrl.imdbrating" id="star-icon"/>
+                                <div id="imdbrating" ng-show="searchCtrl.imdbrating" id="imdbrating" ng-bind-html="searchCtrl.imdbrating"></div>
+                            </div>
+                            
+                            <div id="oscar-area">
+                                <img id="oscar-icon" ng-show="searchCtrl.wonOscar" src="oscar.png" />
+                                <div ng-bind-html="searchCtrl.awards" id="awards"></div>    
+                            </div>
+                            
+                        </div>
+                        
+                        <div ng-show="searchCtrl.title" id="myrating-area">
+                            <!--<div>Awards: {{searchCtrl.myawards}}</div>
+                            <div>Crtics: {{searchCtrl.mycrtics}}</div>-->
+                            <div id="evtitle">E+V SCORE</div>
+                            <div class="odometer" id="myrating">{{searchCtrl.myrating}}</div>
+                            <div id="evexplain">{{searchCtrl.evexplain}}</div>
+                        </div>
+                            
+                        
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+        <script src="angular-sanitize.js"></script>
+        <script src="odometer.min.js"></script>
+        <script src="app.js"></script>
+        
+    </body>
+</html>
