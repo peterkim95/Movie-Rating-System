@@ -220,8 +220,8 @@
                     }
                     
                     //4 - Critics Ratings. Metascores are worth a little less.
-                    myrating += ((imdbr * 0.6) + (mcr * 0.4));
-                    that.mycrtics = ((imdbr * 0.6) + (mcr * 0.4));
+                    myrating += ((imdbr * 0.75) + (mcr * 0.25));
+                    that.mycrtics = ((imdbr * 0.75) + (mcr * 0.25));
                     //alert(imdbr);
                     //alert(mcr);
                     //alert((imdbr * 0.6) + (mcr * 0.4));
