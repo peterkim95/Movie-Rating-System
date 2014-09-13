@@ -39,7 +39,7 @@
                     //2 - How many years have passed since the movie has been released?
                     var d = new Date();
                     var n = d.getFullYear();
-                    myrating -= ((n - parseInt(data.Year))*0.5);
+                    myrating -= ((n - parseInt(data.Year))*0.2);
                     //alert("Years - "+myrating);
                     //alert(myrating);
                     
@@ -155,16 +155,16 @@
                         //3 - How many awards? Oscars are worth significantly more.
                         if(awards.length==3){   //Has won bafta, golden globe, oscar
                             if(data.Awards.indexOf("BAFTA") > -1){
-                                myrating += (30 * awards[0]);
+                                myrating += (40 * awards[0]);
                             }else if(data.Awards.indexOf("Golden Globe") > -1){
-                                myrating += (30 * awards[0]);
+                                myrating += (40 * awards[0]);
                             }
-                            myrating += ((awards[1]+awards[2])*2);
-                            that.myawards = (50 * awards[0])+((awards[1]+awards[2])*2);
+                            myrating += ((awards[1]+awards[2])*0.5);
+                            that.myawards = (50 * awards[0])+((awards[1]+awards[2])*0.5);
                             //alert((awards[1]+awards[2])*10);
                         }else{  //has gotten wins for noms only
-                            myrating += ((awards[0]+awards[1])*2);
-                            that.myawards = ((awards[0]+awards[1])*2);
+                            myrating += ((awards[0]+awards[1])*0.5);
+                            that.myawards = ((awards[0]+awards[1])*0.5);
                         }
                         //alert(awards);
                         
@@ -220,8 +220,8 @@
                     }
                     
                     //4 - Critics Ratings. Metascores are worth a little less.
-                    myrating += ((imdbr * 0.6) + (mcr * 0.4));
-                    that.mycrtics = ((imdbr * 0.6) + (mcr * 0.4));
+                    myrating += ((imdbr * 0.75) + (mcr * 0.25));
+                    that.mycrtics = ((imdbr * 0.75) + (mcr * 0.25));
                     //alert(imdbr);
                     //alert(mcr);
                     //alert((imdbr * 0.6) + (mcr * 0.4));
@@ -231,7 +231,7 @@
                     
                     //Description of Rating
                     var ev = Math.ceil(myrating);
-                    if(ev >= 300){
+                    if(ev >= 250){
                         that.evexplain = "WATCH IT. Period. The perfect balance between entertainment and value. A masterful film that is guaranteed to be talked and watched over and over again throughout history."
                     }else if(ev >= 200){
                         that.evexplain = "AWESOME. Great balance between entertainment and value. Oustanding film that you'll love.";
@@ -246,6 +246,7 @@
                     if(data.Poster!="N/A"){
                         that.noPosterFound = false;
                         that.poster = data.Poster;
+                        $('#poster').attr("src",data.Poster);
                         /*
                         var poster = document.getElementById('poster');
                         poster.onload = function () {
