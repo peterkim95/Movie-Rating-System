@@ -162,9 +162,23 @@
                             myrating += ((awards[1]+awards[2])*0.5);
                             that.myawards = (50 * awards[0])+((awards[1]+awards[2])*0.5);
                             //alert((awards[1]+awards[2])*10);
-                        }else{  //has gotten wins for noms only
+                        }else if(awards.length==2){  //has gotten wins for noms only
+                            if(data.Awards.indexOf("BAFTA") > -1){
+                                myrating += (40 * awards[0]);
+                            }else if(data.Awards.indexOf("Golden Globe") > -1){
+                                myrating += (40 * awards[0]);
+                            }
+                            
                             myrating += ((awards[0]+awards[1])*0.5);
                             that.myawards = ((awards[0]+awards[1])*0.5);
+                        }else{
+                            
+                            if(data.Awards.indexOf("BAFTA") > -1){
+                                myrating += (40 * awards[0]);
+                            }else if(data.Awards.indexOf("Golden Globe") > -1){
+                                myrating += (40 * awards[0]);
+                            }
+                            myrating += (awards[0]*0.5);
                         }
                         //alert(awards);
                         
