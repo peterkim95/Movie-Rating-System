@@ -29,8 +29,8 @@
                     
                     <p id="plot" class="lead">{{searchCtrl.plot}}</p>
                     
-                    <div id="poster-area">
-                        <img id="poster" ng-hide="searchCtrl.noPosterFound" ng-src="{{searchCtrl.poster}}" />
+                    <div id="poster-area"><!--ng-src="{{searchCtrl.poster}}"-->
+                        <img id="poster" ng-hide="searchCtrl.noPosterFound" />
                         <div ng-show="searchCtrl.noPosterFound">No Poster Found. Use your imagination.</div>
                     </div>
                     

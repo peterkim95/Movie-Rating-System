@@ -259,7 +259,7 @@
                     
                     if(data.Poster!="N/A"){
                         that.noPosterFound = false;
-                        that.poster = data.Poster;
+                        //that.poster = data.Poster;
                         $('#poster').attr("src",data.Poster);
                         /*
                         var poster = document.getElementById('poster');
