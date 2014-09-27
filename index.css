@@ -151,7 +151,7 @@
 }
 
 #metascore{
-    width: 90;
+    width: 90px;
     height: 75px;
     color:white;
     font-size: 53px;
@@ -190,7 +190,7 @@
 
 #myrating{
     display: inline-block;
-    font-size: 90px;
+    font-size: 85px;
     vertical-align: top;
     width:151px;
     text-align: center;
