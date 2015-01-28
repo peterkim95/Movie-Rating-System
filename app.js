@@ -16,10 +16,26 @@
                     that.imdbrating = false;
                     that.resultFound = false;
                 }else{
+                    
                     that.resultFound = true;
                     var myrating = 0;
                     that.myawards = 0;
                     that.mycrtics = 0;
+                    
+                    if(data.Poster!="N/A"){
+                        that.noPosterFound = false;
+                        that.poster = data.Poster;
+                        //$('#poster').attr("src",data.Poster);
+                        /*
+                        var poster = document.getElementById('poster');
+                        poster.onload = function () {
+                            $('#poster-area').width(poster.naturalWidth);    	
+                        };
+                        */
+                        
+                    }else{
+                        that.noPosterFound = true;
+                    }
                     
                     that.title = data.Title;
                     
@@ -257,20 +273,7 @@
                         that.evexplain = "TERRIBLE. Just avoid it at all costs!"
                     }
                     
-                    if(data.Poster!="N/A"){
-                        that.noPosterFound = false;
-                        //that.poster = data.Poster;
-                        $('#poster').attr("src",data.Poster);
-                        /*
-                        var poster = document.getElementById('poster');
-                        poster.onload = function () {
-                            $('#poster-area').width(poster.naturalWidth);    	
-                        };
-                        */
-                        
-                    }else{
-                        that.noPosterFound = true;
-                    }
+                    
                     $('#critics-area').css('border-top','1px solid #d0d1d5');
                     
                     that.query = "";
